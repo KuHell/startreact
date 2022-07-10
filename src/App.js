@@ -6,9 +6,13 @@ import { Routes, Route, Lin, useNavigate, Outlet } from "react-router-dom";
 import Detail from "./Screen/Detail";
 import Home from "./Screen/Home";
 import About from "./Screen/About";
+import shoesData from "./data";
+import { useState } from "react";
 
 function App() {
+  const [shoes, setshoes] = useState(shoesData);
   let navigate = useNavigate();
+
   return (
     <div className="App">
       <Navbar bg="dark" variant="dark">
@@ -40,8 +44,8 @@ function App() {
         </Container>
       </Navbar>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/detail" element={<Detail />} />
+        <Route path="/" element={<Home shoes={shoes} />} />
+        <Route path="/detail" element={<Detail shoes={shoes} />} />
         <Route path="/about" element={<About />}>
           <Route path="member" element={<div>멤버</div>} />
           <Route path="location" element={<div>위치 정보</div>} />
