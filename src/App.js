@@ -43,7 +43,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/detail" element={<Detail />} />
         <Route path="/about" element={<About />}>
-          <Route path="a1" element={<About />} />
+          <Route path="member" element={<div>멤버임</div>} />
           <Route path="a2f" element={<About />} />
         </Route>
         <Route path="*" element={<div>404</div>} />
