@@ -6,29 +6,41 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { useState } from "react";
 import shoesData from "./data";
+import { Routes, Route, Link } from "react-router-dom";
 
 function App() {
   const [shoes, setshoes] = useState(shoesData);
   return (
     <div className="App">
-      <Navbar bg="dark" variant="dark">
-        <Container>
-          <Navbar.Brand href="#home">Kuhell</Navbar.Brand>
-          <Nav className="me-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#features">Features</Nav.Link>
-            <Nav.Link href="#pricing">Pricing</Nav.Link>
-          </Nav>
-        </Container>
-      </Navbar>
-      <div className="mainBg"></div>
-      <Container>
-        <Row>
-          {shoes.map(function (i, key) {
-            return <Goods shoes={shoes[key]} i={i} key={key} />;
-          })}
-        </Row>
-      </Container>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <>
+              <Navbar bg="dark" variant="dark">
+                <Container>
+                  <Navbar.Brand href="#home">Kuhell</Navbar.Brand>
+                  <Nav className="me-auto">
+                    <Nav.Link href="#home">Home</Nav.Link>
+                    <Nav.Link href="#features">Features</Nav.Link>
+                    <Nav.Link href="#pricing">Pricing</Nav.Link>
+                  </Nav>
+                </Container>
+              </Navbar>
+              <div className="mainBg"></div>
+              <Container>
+                <Row>
+                  {shoes.map(function (i, key) {
+                    return <Goods shoes={shoes[key]} i={i} key={key} />;
+                  })}
+                </Row>
+              </Container>
+            </>
+          }
+        />
+        <Route path="/detail" element={<div>디테일 페이지</div>} />
+        <Route />
+      </Routes>
     </div>
   );
 }
